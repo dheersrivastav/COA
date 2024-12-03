@@ -1,9 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from "chart.js";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
 import "./App.css";
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const PatientCard = ({ patient, onClick }) => {
   return (
@@ -24,7 +41,12 @@ const PatientCard = ({ patient, onClick }) => {
       <img
         src={patient.profile_picture}
         alt={patient.name}
-        style={{ width: "60px", height: "60px", borderRadius: "50%", marginRight: "20px" }}
+        style={{
+          width: "60px",
+          height: "60px",
+          borderRadius: "50%",
+          marginRight: "20px",
+        }}
       />
       <div>
         <h3 style={{ fontSize: "16px", margin: 0 }}>{patient.name}</h3>
@@ -37,101 +59,211 @@ const PatientCard = ({ patient, onClick }) => {
 
 const PatientDetails = ({ selectedPatient }) => {
   if (!selectedPatient) {
-    return <div>Select a patient to view details</div>;
+    return (
+      <div
+        style={{
+          maxWidth: "600px",
+          width: "100%",
+          padding: "20px",
+          backgroundColor: "#fff",
+          borderRadius: "10px",
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+          margin: "20px auto",
+          textAlign: "center",
+          color: "#777",
+        }}
+      >
+        Select a patient to view details
+      </div>
+    );
   }
 
   const {
     name,
     gender,
-    age,
     date_of_birth,
     profile_picture,
     phone_number,
     emergency_contact,
     insurance_type,
-    diagnosis_history,
   } = selectedPatient;
 
   return (
-    <div style={{ marginLeft: "20px", flex: 1 }}>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: "20px" }}>
+    <div
+      style={{
+        maxWidth: "600px",
+        width: "100%",
+        padding: "20px",
+        backgroundColor: "#fff",
+        borderRadius: "10px",
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+        margin: "20px auto",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          marginBottom: "20px",
+        }}
+      >
         <img
           src={profile_picture}
           alt={name}
-          style={{ width: "100px", height: "100px", borderRadius: "50%", marginBottom: "10px" }}
+          style={{
+            width: "100px",
+            height: "100px",
+            borderRadius: "50%",
+            marginBottom: "10px",
+          }}
         />
-        <h2>{name}</h2>
+        <h2 style={{ color: "#333" }}>{name}</h2>
       </div>
 
-      <div>
-        <p>
+      <div style={{ lineHeight: "1.8", fontSize: "14px", color: "#555" }}>
+        {/* Date of Birth */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            marginBottom: "10px",
+            marginLeft: "10px",
+          }}
+        >
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYHv-27s7X2S36vetk9tKap9o2nknn0gVjDg&s" // Replace with the appropriate icon
+            src="https://img.icons8.com/ios/50/000000/calendar.png" // Date of Birth icon
             alt="Date of Birth"
-            style={{ width: "20px", height: "20px", marginRight: "10px" }}
+            style={{ width: "20px", height: "20px", marginRight: "20px" }}
           />
-          <strong>Date of Birth:</strong> {date_of_birth}
-        </p>
-        <p>
+          <p style={{ margin: 0 }}>
+            <strong>Date of Birth:</strong>
+            <br />
+            {date_of_birth}
+          </p>
+        </div>
+
+        {/* Gender */}
+        <div
+          style={{
+            display: "flex",
+            marginLeft: "10px",
+            alignItems: "center",
+            marginBottom: "10px",
+
+          }}
+        >
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTF3l04g-v9KIIIdbHBuvxrVpjEBkgK5LCSmA&s" // Replace with the appropriate icon
+            src="https://img.icons8.com/ios/50/000000/gender-neutral-user.png" // Gender icon
             alt="Gender"
-            style={{ width: "20px", height: "20px", marginRight: "10px" }}
+            style={{ width: "20px", height: "20px", marginRight: "20px" }}
           />
-          <strong>Gender:</strong> {gender}
-        </p>
-        <p>
+          <p style={{ margin: 0 }}>
+            <strong>Gender:</strong>
+            <br />
+            {gender}
+          </p>
+        </div>
+
+        {/* Phone Number */}
+        <div
+          style={{
+            display: "flex",
+            marginLeft: "10px",
+            alignItems: "center",
+            marginBottom: "10px",
+          }}
+        >
           <img
-            src="https://i.pinimg.com/474x/88/a9/d0/88a9d0c252977e827f7f3862e8de6714.jpg" // Replace with the appropriate icon
+            src="https://img.icons8.com/ios/50/000000/phone.png" // Phone icon
             alt="Phone"
-            style={{ width: "20px", height: "20px", marginRight: "10px" }}
+            style={{ width: "20px", height: "20px", marginRight: "20px" }}
           />
-          Phone: {phone_number}
-        </p>
-        <p>
+          <p style={{ margin: 0 }}>
+            <strong>Phone:</strong>
+            <br />
+            {phone_number}
+          </p>
+        </div>
+
+        {/* Emergency Contact */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            marginBottom: "10px",
+            marginLeft: "10px",
+          }}
+        >
           <img
-            src="https://i.pinimg.com/474x/88/a9/d0/88a9d0c252977e827f7f3862e8de6714.jpg" // Replace with the appropriate icon
+            src="https://img.icons8.com/ios/50/000000/phone.png" // Emergency Contact icon
             alt="Emergency Contact"
-            style={{ width: "20px", height: "20px", marginRight: "10px" }}
+            style={{ width: "20px", height: "20px", marginRight: "20px" }}
           />
-          Emergency Contact: {emergency_contact}
-        </p>
-        <p>
+          <p style={{ margin: 0 }}>
+            <strong>Emergency Contact:</strong>
+            <br />
+            {emergency_contact}
+          </p>
+        </div>
+
+        {/* Insurance Type */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            marginBottom: "10px",
+            marginLeft: "10px",
+          }}
+        >
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHvDrBZtCGctOuSvq_F52J6bsBFBSEZmuAWg&s" // Replace with the appropriate icon
-            alt="Insurance Provider"
-            style={{ width: "20px", height: "20px", marginRight: "10px" }}
+            src="https://w7.pngwing.com/pngs/369/414/png-transparent-logo-organization-brand-security-blue-angle-text-thumbnail.png" // Insurance icon
+            alt="Insurance"
+            style={{ width: "20px", height: "20px", marginRight: "20px" }}
           />
-          Insurance Provider: {insurance_type}
-        </p>
+          <p style={{ margin: 0 }}>
+            <strong>Insurance Provider:</strong>
+            <br />
+            {insurance_type}
+          </p>
+        </div>
       </div>
 
       <button
         style={{
           marginTop: "20px",
-          backgroundColor: "green",
+          backgroundColor: "#01F0D0",
           color: "white",
           border: "none",
           padding: "10px 20px",
           borderRadius: "15px",
+          width: "80%",
           cursor: "pointer",
           display: "block",
           marginLeft: "auto",
           marginRight: "auto",
-          textAlign: "center",
         }}
       >
         Show All Information
       </button>
     </div>
-
   );
 };
 
-const ChartSection = ({ diagnosisHistory }) => {
-  const systolicData = diagnosisHistory.map(entry => entry.blood_pressure.systolic.value);
-  const diastolicData = diagnosisHistory.map(entry => entry.blood_pressure.diastolic.value);
-  const labels = diagnosisHistory.map(entry => `${entry.month} ${entry.year}`);
+const ChartSection = ({ selectedPatient, diagnosisHistory }) => {
+  const systolicData = diagnosisHistory.map(
+    (entry) => entry.blood_pressure.systolic.value
+  );
+  const diastolicData = diagnosisHistory.map(
+    (entry) => entry.blood_pressure.diastolic.value
+  );
+  const labels = diagnosisHistory.map(
+    (entry) => `${entry.month} ${entry.year}`
+  );
+
+  // Calculate average of systolic and diastolic
+  const avgSystolic = systolicData.reduce((a, b) => a + b, 0) / systolicData.length;
+  const avgDiastolic = diastolicData.reduce((a, b) => a + b, 0) / diastolicData.length;
 
   const data = {
     labels: labels,
@@ -184,101 +316,489 @@ const ChartSection = ({ diagnosisHistory }) => {
   return (
     <div
       style={{
+        width: "97%",
+        backgroundColor: "#F4F0FE",
+        borderRadius: "10px",
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
         padding: "20px",
-        backgroundColor: "#f4f4f4",
-        borderRadius: "8px",
+        margin: "10px auto",
         textAlign: "center",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
       }}
     >
-      <Line data={data} options={options} />
+      <h1 style={{ textAlign: "left" }}>Diagnosis History</h1>
+      <h3 style={{ marginBottom: "20px", color: "#333" }}>
+        Blood Pressure Trends
+      </h3>
+
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        {/* Chart Container */}
+        <div style={{ position: "relative", width: "70%", height: "200px" }}>
+          <Line data={data} options={options} />
+        </div>
+
+        <div>
+          <h4 style={{ color: "#333" }}>Average Blood Pressure</h4>
+          <div >
+            <strong>Systolic:</strong>
+            <br></br>{avgSystolic.toFixed(2)} mmHg
+          </div>
+          <div>
+            <strong>Diastolic:</strong>
+            <br></br>{avgDiastolic.toFixed(2)} mmHg
+          </div>
+        </div>
+
+      </div>
+
+      {/* Display Vital Cards in a row */}
+      {selectedPatient && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-around", // Spread out the cards evenly
+            gap: "20px", // Add space between cards
+            marginTop: "20px",
+          }}
+        >
+          <VitalCard
+            title="Respiratory Rate"
+            unit="bpm"
+            icon="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgNVrwo1XjgZecHEEU67vZvCOir3Tbxe5iCw&s"
+            patient={selectedPatient}
+            backgroundColor="#E0F3FA" // First card background color
+          />
+          <VitalCard
+            title="Temperature"
+            unit="°F"
+            icon="https://img.freepik.com/premium-vector/thermometer-icon-logo-vector-design-template_827767-692.jpg"
+            patient={selectedPatient}
+            backgroundColor="#FFE6E9" // Second card background color
+          />
+          <VitalCard
+            title="Heart Rate"
+            unit="bpm"
+            icon="https://t3.ftcdn.net/jpg/03/00/65/82/360_F_300658258_ZONuYpgnH0tSlPHB9lxES1Ai7Ij0ZNSz.jpg"
+            patient={selectedPatient}
+            backgroundColor="#FFE6F1" // Third card background color
+          />
+        </div>
+      )}
     </div>
   );
-};
+}
 
 const DiagnosticList = ({ diagnosisHistory }) => {
-  const data = diagnosisHistory.diagnostic_list;
+  const data = diagnosisHistory?.diagnostic_list || [];
+
   return (
-    <div style={{ marginTop: "20px", padding: "20px", backgroundColor: "#f9f9f9", borderRadius: "8px" }}>
-      <h3>Problems/Diagnosis</h3>
-      {data && data.length > 0 ? (
+    <div
+      style={{
+        width: "97%",
+        margin: "20px auto",
+        padding: "20px",
+        backgroundColor: "#fff",
+        borderRadius: "20px",
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+      }}
+    >
+      <h3 style={{ marginBottom: "20px", color: "#333" }}>
+        Problems / Diagnosis
+      </h3>
+      {data.length > 0 ? (
         <table style={{ width: "100%", borderCollapse: "collapse" }}>
           <thead>
-            <tr>
-              <th style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>Diagnosis</th>
-              <th style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>Description</th>
-              <th style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>Status</th>
+            <tr style={{ backgroundColor: "#F6F7F8" }}>
+              <th
+                style={{
+                  padding: "20px",
+                  borderBottom: "2px solid #e0e0e0",
+                  textAlign: "left",
+                  fontSize: "14px",
+                  color: "#555",
+                  borderTopLeftRadius: "50px", // Apply border-radius to the first cell
+                  borderBottomLeftRadius: "50px", // Apply bottom left radius to match
+                }}
+              >
+                Diagnosis
+              </th>
+              <th
+                style={{
+                  padding: "10px",
+                  borderBottom: "2px solid #e0e0e0",
+                  textAlign: "left",
+                  fontSize: "14px",
+                  color: "#555",
+                }}
+              >
+                Description
+              </th>
+              <th
+                style={{
+                  padding: "10px",
+                  borderBottom: "2px solid #e0e0e0",
+                  textAlign: "left",
+                  fontSize: "14px",
+                  color: "#555",
+                  borderTopRightRadius: "50px", // Apply border-radius to the last cell
+                  borderBottomRightRadius: "50px", // Apply bottom right radius to match
+                }}
+              >
+                Status
+              </th>
             </tr>
           </thead>
           <tbody>
             {data.map((diagnosis, index) => (
               <tr key={index}>
-                <td style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>{diagnosis.name}</td>
-                <td style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>{diagnosis.description}</td>
-                <td style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>{diagnosis.status}</td>
+                <td
+                  style={{
+                    padding: "20px",
+                    borderBottom: "1px solid #e0e0e0",
+                    fontSize: "14px",
+                    color: "#333",
+                  }}
+                >
+                  {diagnosis.name}
+                </td>
+                <td
+                  style={{
+                    padding: "10px",
+                    borderBottom: "1px solid #e0e0e0",
+                    fontSize: "14px",
+                    color: "#333",
+                  }}
+                >
+                  {diagnosis.description}
+                </td>
+                <td
+                  style={{
+                    padding: "10px",
+                    borderBottom: "1px solid #e0e0e0",
+                    fontSize: "14px",
+                    color: diagnosis.status === "Active" ? "green" : "#777",
+                  }}
+                >
+                  {diagnosis.status}
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       ) : (
-        <p>No diagnoses available.</p>
+        <p
+          style={{
+            textAlign: "center",
+            color: "#777",
+            fontSize: "14px",
+            marginTop: "10px",
+          }}
+        >
+          No diagnoses available.
+        </p>
       )}
     </div>
   );
 };
 
-
 const LabReportsList = ({ selectedPatient }) => {
-  const data = selectedPatient.lab_results;
+  const data = selectedPatient?.lab_results;
+
   return (
-    <div style={{ marginTop: "20px", padding: "20px", backgroundColor: "#f9f9f9", borderRadius: "8px" }}>
-      <h3>Lab Reports</h3>
+    <div
+      style={{
+        maxWidth: "600px",
+        width: "100%",
+        padding: "20px",
+        backgroundColor: "#fff",
+        borderRadius: "10px",
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+        margin: "20px auto",
+      }}
+    >
+      <h3 style={{ textAlign: "left", marginBottom: "20px", color: "#333" }}>
+        Lab Results
+      </h3>
       {data && data.length > 0 ? (
         <table style={{ width: "100%", borderCollapse: "collapse" }}>
           <tbody>
             {data.map((report, index) => (
-              <tr key={index}>
-                <td style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>{report}</td>
-                <td style={{ padding: "10px", borderBottom: "1px solid #ccc" }}><img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFU_-K_ZQC_GZLgdMljcAnbU4i7e3-OpBdlA&s"
-                  alt="Phone"
-                  style={{ width: "20px", height: "20px", marginRight: "10px" }}
-                /></td>
+              <tr key={index} style={{ textAlign: "left" }}>
+                <td
+                  style={{
+                    padding: "10px",
+                    borderBottom: "1px solid #e0e0e0",
+                    fontSize: "14px",
+                    color: "#555",
+                  }}
+                >
+                  {report}
+                </td>
+                <td
+                  style={{
+                    padding: "10px",
+                    borderBottom: "1px solid #e0e0e0",
+                    textAlign: "center",
+                  }}
+                >
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFU_-K_ZQC_GZLgdMljcAnbU4i7e3-OpBdlA&s"
+                    alt="View Report"
+                    style={{
+                      width: "24px",
+                      height: "24px",
+                      cursor: "pointer",
+                    }}
+                  />
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       ) : (
-        <p>No diagnoses available.</p>
+        <p style={{ textAlign: "center", color: "#777", fontSize: "14px" }}>
+          No lab reports available.
+        </p>
       )}
     </div>
   );
 };
 
-const VitalCard = ({ title, unit, icon, patient }) => {
+const VitalCard = ({ title, unit, icon, patient, backgroundColor }) => {
+  const data = patient?.diagnosis_history || [];
+
+  const totalRecords = data.length;
+
+  const averages = {
+    respiratory_rate:
+      totalRecords > 0
+        ? data.reduce((sum, record) => sum + record.respiratory_rate.value, 0) /
+        totalRecords
+        : 0,
+    temperature:
+      totalRecords > 0
+        ? data.reduce((sum, record) => sum + record.temperature.value, 0) /
+        totalRecords
+        : 0,
+    heart_rate:
+      totalRecords > 0
+        ? data.reduce((sum, record) => sum + record.heart_rate.value, 0) /
+        totalRecords
+        : 0,
+  };
+
+  let displayValue;
+  switch (title.toLowerCase()) {
+    case "respiratory rate":
+      displayValue = `${averages.respiratory_rate.toFixed(2)} ${unit}`;
+      break;
+    case "temperature":
+      displayValue = `${averages.temperature.toFixed(2)} ${unit}`;
+      break;
+    case "heart rate":
+      displayValue = `${averages.heart_rate.toFixed(2)} ${unit}`;
+      break;
+    default:
+      displayValue = "N/A";
+  }
+
   return (
     <div
       style={{
-        backgroundColor: "white",
-        border: "1px solid #ccc",
-        borderRadius: "8px",
-        padding: "15px",
-        marginBottom: "20px",
-        textAlign: "center",
-        boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
-        flex: 1,
+        maxWidth: "300px",
+        width: "100%",
+        backgroundColor: backgroundColor, // Apply the dynamic background color
+        borderRadius: "10px",
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+        padding: "20px",
+        margin: "10px",
+        textAlign: "left", // Align text to the left
+        display: "flex",
+        flexDirection: "column", // Stack content vertically
       }}
     >
-      <img src={icon} alt={title} style={{ width: "40px", height: "40px", marginBottom: "10px" }} />
-      <h3>{title}</h3>
-      <p style={{ fontSize: "24px", margin: "10px 0" }}>
-        {unit}
+      {/* Image in a rounded circle */}
+      <div
+        style={{
+          width: "100px",
+          height: "100px",
+          borderRadius: "50%",
+          overflow: "hidden",
+          marginBottom: "15px", // Add space below the image
+          backgroundColor: "white",
+        }}
+      >
+        <img
+          src={icon}
+          alt={title}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover", // Ensures the image covers the circle area
+          }}
+        />
+      </div>
+
+      {/* Title */}
+      <h3
+        style={{
+          fontSize: "18px",
+          color: "#333",
+          marginBottom: "10px",
+        }}
+      >
+        {title}
+      </h3>
+
+      {/* Displayed value for the rate */}
+      <p
+        style={{
+          fontSize: "24px",
+          color: "#007BFF",
+          margin: "10px 0",
+          fontWeight: "bold",
+        }}
+      >
+        {displayValue}
       </p>
     </div>
   );
 };
+
+const Navbar = () => (
+  <nav
+    style={{
+      backgroundColor: "white",
+      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Card-like shadow
+      borderRadius: "50px", // Rounded edges
+      color: "black",
+      padding: "10px 30px",
+      display: "flex",
+      alignItems: "center",
+      margin: "10px", // Adds spacing around the navbar
+    }}
+  >
+    {/* Logo Section */}
+    <div style={{ display: "flex", alignItems: "center", marginRight: "auto" }}>
+      <img
+        src="1.png" // Replace with your logo URL
+        alt="Logo"
+        style={{ width: "200px", height: "50px", marginRight: "10px" }}
+      />
+    </div>
+
+    {/* Navigation Links Section */}
+    <div style={{ display: "flex", justifyContent: "center", flex: 1 }}>
+      <a
+        href="#Overview"
+        style={{
+          color: "black",
+          margin: "0 20px",
+          textDecoration: "none",
+          fontSize: "16px",
+          padding: "10px",
+        }}
+      >
+        <img src="9.png"></img> Overview
+      </a>
+      <a
+        href="#Patients"
+        style={{
+          color: "black",
+          margin: "0 20px",
+          textDecoration: "none",
+          fontSize: "16px",
+          backgroundColor: "#01F0D0",
+          padding: "10px",
+          borderRadius: "50px",
+        }}
+      >
+        <img src="5.png"></img> Patients
+      </a>
+
+      <a
+        href="#Message"
+        style={{
+          color: "black",
+          margin: "0 20px",
+          padding: "10px",
+          textDecoration: "none",
+          fontSize: "16px",
+        }}
+      >
+        <img src="7.png"></img> Message
+      </a>
+      <a
+        href="#Transactions"
+        style={{
+          color: "black",
+          margin: "0 20px",
+          padding: "10px",
+          textDecoration: "none",
+          fontSize: "16px",
+        }}
+      >
+        <img src="8.png"></img> Transactions
+      </a>
+      {/* <a
+  href="#about"
+  style={{
+    color: "black",
+    margin: "0 20px",
+    textDecoration: "none",
+    fontSize: "16px",
+    display: "inline-flex", // Ensure text and image are inline
+    alignItems: "center",   // Align items vertically
+  }}
+>
+  <img 
+    src="6.png" 
+    alt="Schedule Icon"
+    style={{
+      width: "30px", // Consistent size for all icons
+      marginRight: "5px", // Spacing between the icon and text
+    }}
+  />
+  Schedule
+</a> */}
+    </div>
+
+    {/* Image and Name Section */}
+    <div style={{ display: "flex", alignItems: "center" }}>
+      <img
+        src="2.png" // Replace with the path to the profile image
+        alt="Dr. Jose Simmons"
+        style={{
+          width: "40px",
+          height: "40px",
+          borderRadius: "50%", // Circular image
+          marginRight: "10px",
+        }}
+      />
+      <div style={{ marginRight: "10px" }}>
+        <div style={{ fontSize: "16px", fontWeight: "bold", color: "black" }}>
+          Dr. Jose Simmons
+        </div>
+        <div style={{ fontSize: "14px", color: "gray" }}>
+          General Practitioner
+        </div>
+      </div>
+      |
+      <img
+        src="3.png" // Replace with the path to the profile image
+        alt="Dr. Jose Simmons"
+        style={{
+          margin: "0 10px 0 10px",
+        }}
+      />
+      <img
+        src="4.png" // Replace with the path to the profile image
+        style={{
+          marginRight: "10px",
+        }}
+      />
+    </div>
+  </nav>
+);
 
 const App = () => {
   const [patients, setPatients] = useState([]);
@@ -287,12 +807,15 @@ const App = () => {
   const [selectedPatient, setSelectedPatient] = useState(null);
 
   const getPatients = async () => {
-    const response = await fetch("https://fedskillstest.coalitiontechnologies.workers.dev", {
-      method: "GET",
-      headers: {
-        Authorization: "Basic " + btoa("coalition:skills-test"),
-      },
-    });
+    const response = await fetch(
+      "https://fedskillstest.coalitiontechnologies.workers.dev",
+      {
+        method: "GET",
+        headers: {
+          Authorization: "Basic " + btoa("coalition:skills-test"),
+        },
+      }
+    );
     const data = await response.json();
     return data;
   };
@@ -316,54 +839,74 @@ const App = () => {
   };
 
   return (
-    <div style={{ display: "flex", width: "100%" }}>
-      <div style={{ width: "250px", borderRight: "1px solid #ccc", padding: "20px", overflowY: "auto" }}>
-        <input
-          type="text"
-          placeholder="Search patients..."
-          value={searchQuery}
-          onChange={(e) => handleSearch(e.target.value)}
-          style={{
-            width: "100%",
-            padding: "10px",
-            marginBottom: "20px",
-            borderRadius: "8px",
-            border: "1px solid #ccc",
-          }}
-        />
-        {filteredPatients.map((patient) => (
-          <PatientCard key={patient.name} patient={patient} onClick={setSelectedPatient} />
-        ))}
-      </div>
-
-      <div style={{ width: "50%", padding: "20px" }}>
-        <h1>Diagnosis History</h1>
-        {selectedPatient && <ChartSection diagnosisHistory={selectedPatient.diagnosis_history} />}
+    <>
+      <Navbar />
+      <div style={{ display: "flex", width: "100%" }}>
         <div
           style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            gap: "20px",
+            width: "300px", // Adjust the width of the card
+            borderRadius: "16px", // Rounded corners for the card
+            padding: "20px", // Padding inside the card
+            backgroundColor: "#fff", // White background for the card
+            boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)", // Light shadow for depth
+            border: "1px solid #ccc", // Border around the card
           }}
         >
+          <div
+            style={{
+              display: "flex", // Align items horizontally
+              justifyContent: "space-between", // Push title and icon to opposite ends
+              alignItems: "center", // Align icon and text vertically centered
+              marginBottom: "20px", // Space between title and patient list
+            }}
+          >
+            <h3 style={{ margin: 0 }}>Patients</h3> {/* Title of the section */}
+            <img
+              src="https://img.icons8.com/ios/50/000000/search.png" // Magnifying lens icon (replace with your preferred icon)
+              alt="Search Icon"
+              style={{
+                width: "20px", // Icon size
+                height: "20px", // Icon size
+              }}
+            />
+          </div>
+
+          <div
+            style={{
+              maxHeight: "1200px", // Max height for the scrollable area
+              overflowY: "auto", // Enable vertical scrolling if content exceeds max height
+            }}
+          >
+            {filteredPatients.map((patient) => (
+              <PatientCard
+                key={patient.name}
+                patient={patient}
+                onClick={setSelectedPatient}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div style={{ width: "50%", padding: "20px" }}>
           {selectedPatient && (
-            <>
-              {selectedPatient && <VitalCard title="Respiratory Rate" unit="bpm" icon="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgNVrwo1XjgZecHEEU67vZvCOir3Tbxe5iCw&s" patient={patients} />}
-              {selectedPatient && <VitalCard title="Temperature" unit="°F" icon="https://img.freepik.com/premium-vector/thermometer-icon-logo-vector-design-template_827767-692.jpg" patient={selectedPatient} />}
-              {selectedPatient && <VitalCard title="Heart Rate" unit="bpm" icon="https://t3.ftcdn.net/jpg/03/00/65/82/360_F_300658258_ZONuYpgnH0tSlPHB9lxES1Ai7Ij0ZNSz.jpg" patient={selectedPatient} />}
-            </>
+            <ChartSection
+              diagnosisHistory={selectedPatient.diagnosis_history}
+              selectedPatient={selectedPatient}
+            />
+          )}
+          {selectedPatient && (
+            <DiagnosticList diagnosisHistory={selectedPatient} />
           )}
         </div>
-        {selectedPatient && <DiagnosticList diagnosisHistory={selectedPatient} />}
-      </div>
 
-      <div style={{ width: "25%", padding: "20px" }}>
-        <PatientDetails selectedPatient={selectedPatient} />
-        {selectedPatient && <LabReportsList selectedPatient={selectedPatient} />}
+        <div style={{ width: "25%", padding: "20px" }}>
+          <PatientDetails selectedPatient={selectedPatient} />
+          {selectedPatient && (
+            <LabReportsList selectedPatient={selectedPatient} />
+          )}
+        </div>
       </div>
-
-    </div>
+    </>
   );
 };
 
