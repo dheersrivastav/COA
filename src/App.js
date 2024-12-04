@@ -132,7 +132,7 @@ const PatientDetails = ({ selectedPatient }) => {
           }}
         >
           <img
-            src="https://img.icons8.com/ios/50/000000/calendar.png" // Date of Birth icon
+            src="https://img.icons8.com/ios/50/000000/calendar.png"
             alt="Date of Birth"
             style={{ width: "20px", height: "20px", marginRight: "20px" }}
           />
@@ -143,7 +143,6 @@ const PatientDetails = ({ selectedPatient }) => {
           </p>
         </div>
 
-        {/* Gender */}
         <div
           style={{
             display: "flex",
@@ -154,7 +153,7 @@ const PatientDetails = ({ selectedPatient }) => {
           }}
         >
           <img
-            src="https://img.icons8.com/ios/50/000000/gender-neutral-user.png" // Gender icon
+            src="https://img.icons8.com/ios/50/000000/gender-neutral-user.png"
             alt="Gender"
             style={{ width: "20px", height: "20px", marginRight: "20px" }}
           />
@@ -164,8 +163,6 @@ const PatientDetails = ({ selectedPatient }) => {
             {gender}
           </p>
         </div>
-
-        {/* Phone Number */}
         <div
           style={{
             display: "flex",
@@ -175,7 +172,7 @@ const PatientDetails = ({ selectedPatient }) => {
           }}
         >
           <img
-            src="https://img.icons8.com/ios/50/000000/phone.png" // Phone icon
+            src="https://img.icons8.com/ios/50/000000/phone.png"
             alt="Phone"
             style={{ width: "20px", height: "20px", marginRight: "20px" }}
           />
@@ -185,8 +182,6 @@ const PatientDetails = ({ selectedPatient }) => {
             {phone_number}
           </p>
         </div>
-
-        {/* Emergency Contact */}
         <div
           style={{
             display: "flex",
@@ -196,7 +191,7 @@ const PatientDetails = ({ selectedPatient }) => {
           }}
         >
           <img
-            src="https://img.icons8.com/ios/50/000000/phone.png" // Emergency Contact icon
+            src="https://img.icons8.com/ios/50/000000/phone.png"
             alt="Emergency Contact"
             style={{ width: "20px", height: "20px", marginRight: "20px" }}
           />
@@ -207,7 +202,6 @@ const PatientDetails = ({ selectedPatient }) => {
           </p>
         </div>
 
-        {/* Insurance Type */}
         <div
           style={{
             display: "flex",
@@ -261,7 +255,6 @@ const ChartSection = ({ selectedPatient, diagnosisHistory }) => {
     (entry) => `${entry.month} ${entry.year}`
   );
 
-  // Calculate average of systolic and diastolic
   const avgSystolic = systolicData.reduce((a, b) => a + b, 0) / systolicData.length;
   const avgDiastolic = diastolicData.reduce((a, b) => a + b, 0) / diastolicData.length;
 
@@ -331,7 +324,6 @@ const ChartSection = ({ selectedPatient, diagnosisHistory }) => {
       </h3>
 
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        {/* Chart Container */}
         <div style={{ position: "relative", width: "70%", height: "200px" }}>
           <Line data={data} options={options} />
         </div>
@@ -349,14 +341,12 @@ const ChartSection = ({ selectedPatient, diagnosisHistory }) => {
         </div>
 
       </div>
-
-      {/* Display Vital Cards in a row */}
       {selectedPatient && (
         <div
           style={{
             display: "flex",
-            justifyContent: "space-around", // Spread out the cards evenly
-            gap: "20px", // Add space between cards
+            justifyContent: "space-around",
+            gap: "20px",
             marginTop: "20px",
           }}
         >
@@ -365,21 +355,21 @@ const ChartSection = ({ selectedPatient, diagnosisHistory }) => {
             unit="bpm"
             icon="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgNVrwo1XjgZecHEEU67vZvCOir3Tbxe5iCw&s"
             patient={selectedPatient}
-            backgroundColor="#E0F3FA" // First card background color
+            backgroundColor="#E0F3FA"
           />
           <VitalCard
             title="Temperature"
             unit="°F"
             icon="https://img.freepik.com/premium-vector/thermometer-icon-logo-vector-design-template_827767-692.jpg"
             patient={selectedPatient}
-            backgroundColor="#FFE6E9" // Second card background color
+            backgroundColor="#FFE6E9"
           />
           <VitalCard
             title="Heart Rate"
             unit="bpm"
             icon="https://t3.ftcdn.net/jpg/03/00/65/82/360_F_300658258_ZONuYpgnH0tSlPHB9lxES1Ai7Ij0ZNSz.jpg"
             patient={selectedPatient}
-            backgroundColor="#FFE6F1" // Third card background color
+            backgroundColor="#FFE6F1"
           />
         </div>
       )}
@@ -415,8 +405,8 @@ const DiagnosticList = ({ diagnosisHistory }) => {
                   textAlign: "left",
                   fontSize: "14px",
                   color: "#555",
-                  borderTopLeftRadius: "50px", // Apply border-radius to the first cell
-                  borderBottomLeftRadius: "50px", // Apply bottom left radius to match
+                  borderTopLeftRadius: "50px",
+                  borderBottomLeftRadius: "50px",
                 }}
               >
                 Diagnosis
@@ -439,8 +429,8 @@ const DiagnosticList = ({ diagnosisHistory }) => {
                   textAlign: "left",
                   fontSize: "14px",
                   color: "#555",
-                  borderTopRightRadius: "50px", // Apply border-radius to the last cell
-                  borderBottomRightRadius: "50px", // Apply bottom right radius to match
+                  borderTopRightRadius: "50px",
+                  borderBottomRightRadius: "50px",
                 }}
               >
                 Status
@@ -606,24 +596,23 @@ const VitalCard = ({ title, unit, icon, patient, backgroundColor }) => {
       style={{
         maxWidth: "300px",
         width: "100%",
-        backgroundColor: backgroundColor, // Apply the dynamic background color
+        backgroundColor: backgroundColor,
         borderRadius: "10px",
         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
         padding: "20px",
         margin: "10px",
-        textAlign: "left", // Align text to the left
+        textAlign: "left",
         display: "flex",
-        flexDirection: "column", // Stack content vertically
+        flexDirection: "column",
       }}
     >
-      {/* Image in a rounded circle */}
       <div
         style={{
           width: "100px",
           height: "100px",
           borderRadius: "50%",
           overflow: "hidden",
-          marginBottom: "15px", // Add space below the image
+          marginBottom: "15px",
           backgroundColor: "white",
         }}
       >
@@ -633,12 +622,10 @@ const VitalCard = ({ title, unit, icon, patient, backgroundColor }) => {
           style={{
             width: "100%",
             height: "100%",
-            objectFit: "cover", // Ensures the image covers the circle area
+            objectFit: "cover",
           }}
         />
       </div>
-
-      {/* Title */}
       <h3
         style={{
           fontSize: "18px",
@@ -648,8 +635,6 @@ const VitalCard = ({ title, unit, icon, patient, backgroundColor }) => {
       >
         {title}
       </h3>
-
-      {/* Displayed value for the rate */}
       <p
         style={{
           fontSize: "24px",
@@ -668,25 +653,23 @@ const Navbar = () => (
   <nav
     style={{
       backgroundColor: "white",
-      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Card-like shadow
-      borderRadius: "50px", // Rounded edges
+      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+      borderRadius: "50px",
       color: "black",
       padding: "10px 30px",
       display: "flex",
       alignItems: "center",
-      margin: "10px", // Adds spacing around the navbar
+      margin: "10px",
     }}
   >
-    {/* Logo Section */}
     <div style={{ display: "flex", alignItems: "center", marginRight: "auto" }}>
       <img
-        src="1.png" // Replace with your logo URL
+        src="1.png"
         alt="Logo"
         style={{ width: "200px", height: "50px", marginRight: "10px" }}
       />
     </div>
 
-    {/* Navigation Links Section */}
     <div style={{ display: "flex", justifyContent: "center", flex: 1 }}>
       <a
         href="#Overview"
@@ -762,15 +745,14 @@ const Navbar = () => (
 </a> */}
     </div>
 
-    {/* Image and Name Section */}
     <div style={{ display: "flex", alignItems: "center" }}>
       <img
-        src="2.png" // Replace with the path to the profile image
+        src="2.png"
         alt="Dr. Jose Simmons"
         style={{
           width: "40px",
           height: "40px",
-          borderRadius: "50%", // Circular image
+          borderRadius: "50%",
           marginRight: "10px",
         }}
       />
@@ -784,14 +766,14 @@ const Navbar = () => (
       </div>
       |
       <img
-        src="3.png" // Replace with the path to the profile image
+        src="3.png"
         alt="Dr. Jose Simmons"
         style={{
           margin: "0 10px 0 10px",
         }}
       />
       <img
-        src="4.png" // Replace with the path to the profile image
+        src="4.png"
         style={{
           marginRight: "10px",
         }}
@@ -844,37 +826,37 @@ const App = () => {
       <div style={{ display: "flex", width: "100%" }}>
         <div
           style={{
-            width: "300px", // Adjust the width of the card
-            borderRadius: "16px", // Rounded corners for the card
-            padding: "20px", // Padding inside the card
-            backgroundColor: "#fff", // White background for the card
-            boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)", // Light shadow for depth
-            border: "1px solid #ccc", // Border around the card
+            width: "300px",
+            borderRadius: "16px",
+            padding: "20px",
+            backgroundColor: "#fff",
+            boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+            border: "1px solid #ccc",
           }}
         >
           <div
             style={{
-              display: "flex", // Align items horizontally
-              justifyContent: "space-between", // Push title and icon to opposite ends
-              alignItems: "center", // Align icon and text vertically centered
-              marginBottom: "20px", // Space between title and patient list
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginBottom: "20px",
             }}
           >
-            <h3 style={{ margin: 0 }}>Patients</h3> {/* Title of the section */}
+            <h3 style={{ margin: 0 }}>Patients</h3>
             <img
-              src="https://img.icons8.com/ios/50/000000/search.png" // Magnifying lens icon (replace with your preferred icon)
+              src="https://img.icons8.com/ios/50/000000/search.png"
               alt="Search Icon"
               style={{
-                width: "20px", // Icon size
-                height: "20px", // Icon size
+                width: "20px",
+                height: "20px",
               }}
             />
           </div>
 
           <div
             style={{
-              maxHeight: "1200px", // Max height for the scrollable area
-              overflowY: "auto", // Enable vertical scrolling if content exceeds max height
+              maxHeight: "1200px",
+              overflowY: "auto",
             }}
           >
             {filteredPatients.map((patient) => (
